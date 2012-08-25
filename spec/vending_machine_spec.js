@@ -34,4 +34,17 @@ describe('Vending Machine', function() {
 			expect(vm.getTotalAmount()).toEqual(110);	
 		});
 	});
+
+	describe('払い戻しをする場合', function() {
+		it('１０円を入れて、払い戻しを行うと、つり銭として、１０円が出力される。', function() {
+			vm.insertMoney(10);
+			var changeMoney = vm.payBack();
+			expect(changeMoney).toEqual(10);
+		});
+		it('１０円をいれて、払い戻しを行うと、総計が０円になる', function() {
+			vm.insertMoney(10);
+			vm.payBack();
+			expect(vm.getTotalAmount()).toEqual(0);
+		});
+	});
 });
