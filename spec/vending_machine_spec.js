@@ -28,5 +28,10 @@ describe('Vending Machine', function() {
 			vm.insertMoney(100);
 			expect(vm.getTotalAmount()).toEqual(100);	
 		});
+		it('１０円と１００円を入れると、総計が１１０円になる', function() {
+			vm.insertMoney(10);
+			vm.insertMoney(100);
+			expect(vm.getTotalAmount()).toEqual(110);	
+		});
 	});
 });
