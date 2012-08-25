@@ -42,6 +42,13 @@ describe('Vending Machine', function() {
 			vm.insertMoney(1);
 			expect(vm.getTotalAmount()).toEqual(0);	
 		});
+		var list = new Array(10,50,100,500,1000);
+		list.forEach(function(money){
+			it(money + '円が投入された場合は総計は' + money + '円になる', function() {
+				vm.insertMoney(money);
+				expect(vm.getTotalAmount()).toEqual(money);	
+			});
+		});
 	});
 
 	describe('払い戻しをする場合', function() {
