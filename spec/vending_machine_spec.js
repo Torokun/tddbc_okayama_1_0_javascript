@@ -8,17 +8,21 @@
 
 var createVendingMachine = require('../lib/vending_machine').createVendingMachine;
 
-describe('硬貨を投入していない場合', function() {
-	it('総計は０円', function() {
-		var vm = createVendingMachine();
-		expect(vm.getTotalAmount()).toEqual(0);	
+describe('Vending Machine', function() {
+	var vm;
+	beforeEach(function() {
+		vm = createVendingMachine();
 	});
-});
-
-describe('硬化を投入する場合', function() {
-	it('１０円を入れると、総計が１０円になる', function() {
-		var vm = createVendingMachine();
-		vm.insertMoney(10);
-		expect(vm.getTotalAmount()).toEqual(10);	
+	describe('硬貨を投入していない場合', function() {
+		it('総計は０円', function() {
+			expect(vm.getTotalAmount()).toEqual(0);	
+		});
+	});
+	
+	describe('硬化を投入する場合', function() {
+		it('１０円を入れると、総計が１０円になる', function() {
+			vm.insertMoney(10);
+			expect(vm.getTotalAmount()).toEqual(10);	
+		});
 	});
 });
